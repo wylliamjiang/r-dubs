@@ -13,12 +13,16 @@ client.on('message', msg => {
 
         var res = process_raw_rws_string(msg.content.substring(5));
 
+        // creating the embed object
         var embedded_message = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle('RWS')
             .setTimestamp();
 
+        // iterating over list of returned processed string values
         for (var i = 0; i < res["usernames"].length; i++) {
+            // due to limitations on discord.js api for embed objects (limit 25 objects)
+            // need to check if 8 rows have been created and if so start new embed object.
             if (i != 0 && i % 8 == 0) {
                 msg.channel.send(embedded_message);
                 embedded_message = new Discord.MessageEmbed()
@@ -32,6 +36,7 @@ client.on('message', msg => {
         }
 
         msg.channel.send(embedded_message);
+        // deleting user command message for channel cleanliness
         msg.delete({timeout: 1000})
             .then(msg => console.log(`Deleted message from ${msg.author.username} after 1 second.`));
     }
