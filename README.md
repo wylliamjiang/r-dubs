@@ -30,3 +30,10 @@ https://discordapp.com/oauth2/authorize?&client_id=CLIENTID&scope=bot&permission
 ```
 node bot.js
 ```
+
+## Possible Improvements
+Currently using the [Discord.js](https://discord.js.org/#/) API and specifically the [Embeds](https://discordjs.guide/popular-topics/embeds.html) objects to generate the tables. Unfortunately there is a limitation on the number of fields (25) and also mobile support is not ideal as it lists all the information vertically. 
+
+One possible solution is generating ascii tables dynamically to respond to the output values.
+* Idea from [reddit](https://www.reddit.com/r/discordapp/comments/5dqsml/how_do_markdown_tables_work/)
+* Github pointer to [user generated support class](https://github.com/ekgame/storasbot/blob/master/src/main/java/lt/ekgame/storasbot/utils/TableRenderer.java)
